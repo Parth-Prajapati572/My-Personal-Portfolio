@@ -1,8 +1,8 @@
 /* ----- NAVIGATION BAR FUNCTION ----- */
-function myMenuFunction(){
+function myMenuFunction() {
   var menuBtn = document.getElementById("myNavMenu");
 
-  if(menuBtn.className === "nav-menu"){
+  if (menuBtn.className === "nav-menu") {
     menuBtn.className += " responsive";
   } else {
     menuBtn.className = "nav-menu";
@@ -10,130 +10,128 @@ function myMenuFunction(){
 }
 
 /* ----- ADD SHADOW ON NAVIGATION BAR WHILE SCROLLING ----- */
-window.onscroll = function() {headerShadow()};
+window.onscroll = function () {
+  headerShadow();
+};
 
 function headerShadow() {
-  const navHeader =document.getElementById("header");
+  const navHeader = document.getElementById("header");
 
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop >  50) {
-
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     navHeader.style.boxShadow = "0 1px 6px rgba(0, 0, 0, 0.1)";
     navHeader.style.height = "70px";
     navHeader.style.lineHeight = "70px";
-
   } else {
-
     navHeader.style.boxShadow = "none";
     navHeader.style.height = "90px";
     navHeader.style.lineHeight = "90px";
-
   }
 }
 
-
 /* ----- TYPING EFFECT ----- */
-var typingEffect = new Typed(".typedText",{
-  strings : ["AI / ML Enthusiast", "Software Engineer", "Data Scientist", "Full-Stack Developer", "Graduate Student"],
-  loop : true,
-  typeSpeed : 100, 
-  backSpeed : 80,
-  backDelay : 2000
-})
-
+var typingEffect = new Typed(".typedText", {
+  strings: [
+    "AI / ML Enthusiast",
+    "Software Engineer",
+    "Data Scientist",
+    "Full-Stack Developer",
+    "Graduate Student",
+  ],
+  loop: true,
+  typeSpeed: 100,
+  backSpeed: 80,
+  backDelay: 2000,
+});
 
 /* ----- ## -- SCROLL REVEAL ANIMATION -- ## ----- */
 const sr = ScrollReveal({
-      origin: 'top',
-      distance: '80px',
-      duration: 2000,
-      reset: true     
-})
+  origin: "top",
+  distance: "80px",
+  duration: 2000,
+  reset: true,
+});
 
 /* -- HOME -- */
-sr.reveal('.featured-text-card',{})
-sr.reveal('.featured-name',{delay: 100})
-sr.reveal('.featured-text-info',{delay: 200})
-sr.reveal('.featured-text-btn',{delay: 200})
-sr.reveal('.social_icons',{delay: 200})
-sr.reveal('.featured-image',{delay: 300})
+sr.reveal(".featured-text-card", {});
+sr.reveal(".featured-name", { delay: 100 });
+sr.reveal(".featured-text-info", { delay: 200 });
+sr.reveal(".featured-text-btn", { delay: 200 });
+sr.reveal(".social_icons", { delay: 200 });
+sr.reveal(".featured-image", { delay: 300 });
 
-sr.reveal('.timeline',{interval: 200})
+sr.reveal(".timeline", { interval: 200 });
 /* -- PROJECT BOX -- */
-sr.reveal('.project-box',{interval: 200})
+sr.reveal(".project-box", { interval: 200 });
 
 /* -- Certification BOX -- */
-sr.reveal('.certificate-box',{interval: 200})
+sr.reveal(".certificate-box", { interval: 200 });
 
 /* -- HEADINGS -- */
-sr.reveal('.top-header',{})
+sr.reveal(".top-header", {});
 
 /* ----- ## -- SCROLL REVEAL LEFT_RIGHT ANIMATION -- ## ----- */
 
 /* -- ABOUT INFO & CONTACT INFO -- */
 const srLeft = ScrollReveal({
-origin: 'left',
-distance: '80px',
-duration: 2000,
-reset: true
-})
+  origin: "left",
+  distance: "80px",
+  duration: 2000,
+  reset: true,
+});
 
-srLeft.reveal('.about-info',{delay: 100})
-srLeft.reveal('.contact-info',{delay: 100})
+srLeft.reveal(".about-info", { delay: 100 });
+srLeft.reveal(".contact-info", { delay: 100 });
 
 /* -- ABOUT SKILLS & FORM BOX -- */
 const srRight = ScrollReveal({
-origin: 'right',
-distance: '80px',
-duration: 2000,
-reset: true
-})
+  origin: "right",
+  distance: "80px",
+  duration: 2000,
+  reset: true,
+});
 
-srRight.reveal('.skills-box',{delay: 100})
-srRight.reveal('.form-control',{delay: 100})
-
-
+srRight.reveal(".skills-box", { delay: 100 });
+srRight.reveal(".form-control", { delay: 100 });
 
 /* ----- CHANGE ACTIVE LINK ----- */
 
-const sections = document.querySelectorAll('section[id]')
+const sections = document.querySelectorAll("section[id]");
 
 function scrollActive() {
-const scrollY = window.scrollY;
+  const scrollY = window.scrollY;
 
-sections.forEach(current =>{
-  const sectionHeight = current.offsetHeight,
+  sections.forEach((current) => {
+    const sectionHeight = current.offsetHeight,
       sectionTop = current.offsetTop - 50,
-    sectionId = current.getAttribute('id')
+      sectionId = current.getAttribute("id");
 
-  if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) { 
-
-      document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.add('active-link')
-
-  }  else {
-
-    document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.remove('active-link')
-
-  }
-})
+    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+      document
+        .querySelector(".nav-menu a[href*=" + sectionId + "]")
+        .classList.add("active-link");
+    } else {
+      document
+        .querySelector(".nav-menu a[href*=" + sectionId + "]")
+        .classList.remove("active-link");
+    }
+  });
 }
 
-window.addEventListener('scroll', scrollActive)
+window.addEventListener("scroll", scrollActive);
 
 // JavaScript to handle the modal
-document.addEventListener('DOMContentLoaded', function() {
-  const modal = document.getElementById('project-modal');
-  const closeBtn = document.querySelector('.close-btn');
-  const detailsBtns = document.querySelectorAll('.details-btn');
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("project-modal");
+  const closeBtn = document.querySelector(".close-btn");
+  const detailsBtns = document.querySelectorAll(".details-btn");
 
   // Project data (can be fetched from an API or hardcoded)
   const projects = {
-      1: {
-        name: `<h5> SmartPDF Chat: AI-Powered Document Analysis </h5>
+    1: {
+      name: `<h5> SmartPDF Chat: AI-Powered Document Analysis </h5>
         <br>`,
-        images: [
-            "assets/images/SmartPDF-project/6.png"
-        ],
-        description: `
+      images: ["assets/images/SmartPDF-project/6.png"],
+      description: `
             <h3>Project Overview</h3>
             <p>I developed <strong>SmartPDF Chat</strong>, an advanced Python-based web application that enables users to interactively query multiple PDF documents using natural language processing (NLP). This tool allows users to upload PDF files, ask questions in plain English, and receive precise, contextually relevant answers derived exclusively from the content of the uploaded documents. By leveraging cutting-edge AI technologies, SmartPDF Chat ensures accurate and document-specific responses, making it an invaluable tool for research, business, legal, and educational applications.</p>
             <br>
@@ -179,16 +177,13 @@ document.addEventListener('DOMContentLoaded', function() {
             </ul>
             
             
-        `
+        `,
     },
 
     2: {
       name: `<h5> Stock Analytics Web Application </h5>
         <br>`,
-      images: [
-          "assets/images/stockweb.png"
-          
-      ],
+      images: ["assets/images/stockweb.png"],
       description: `
         <h3>Project Overview</h3>
         <p>Developed a full-stack web application for <strong>real-time stock analysis</strong>, enabling users to search, track, and trade stocks using <strong>Finnhub</strong> and <strong>Polygon.io</strong> APIs. The platform features <strong>dynamic data visualization</strong>, <strong>responsive design</strong>, and secure <strong>portfolio management</strong>. Built with <strong>React, Node.js, and MongoDB</strong>, and deployed on <strong>AWS EC2</strong> for scalable cloud performance.</p>
@@ -227,18 +222,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <p><strong>Note:</strong> The source code for this project is in a <strong>private GitHub repository</strong>. If you would like to <strong>view</strong> the code, please contact me via <a href="mailto:parthdpraja@gmail.com">email</a> or LinkedIn.</p>
 
-        `
+        `,
+    },
 
-      },
-
-      3: {
-        name: `<h5> Duo-Othello AI Agent: Intelligent Game-Playing Agent for Competitive Board Strategy </h5>
+    3: {
+      name: `<h5> Duo-Othello AI Agent: Intelligent Game-Playing Agent for Competitive Board Strategy </h5>
           <br>`,
-        images: [
-            "assets/images/othello.png"
-            
-        ],
-        description: `
+      images: ["assets/images/othello.png"],
+      description: `
          <h3>Project Overview</h3>
     <p>Developed a Python-based <strong>AI agent</strong> for <strong>Duo-Othello</strong>, a 12x12 variant of Reversi/Othello, designed to compete against reference agents in a <strong>time-constrained</strong> environment. The agent leverages <strong>alpha-beta pruning</strong> and <strong>adaptive depth selection</strong> to optimize move decisions under strict time limits (e.g., 300 seconds total). Achieved a <strong>90% win rate</strong> against a minimax reference agent.</p>
 <br>
@@ -274,18 +265,14 @@ document.addEventListener('DOMContentLoaded', function() {
         <li><strong>Evaluation Tuning:</strong> Calibrated positional weights using iterative testing against reference agents.</li>
     </ul>
 
-    `
+    `,
+    },
 
-  
-        },
-
-      4: {
-        name: `<h5> Transfer Learning for Image Classification </h5>
+    4: {
+      name: `<h5> Transfer Learning for Image Classification </h5>
           <br>`,
-        images: [
-            "assets/images/multi-class-ml.png"            
-        ],
-        description: `
+      images: ["assets/images/multi-class-ml.png"],
+      description: `
           <h3>Project Overview</h3>
         <p>Developed a multi-class image classification system to distinguish between six scenes (buildings, forest, glacier, mountain, sea, and street) using <strong>transfer learning</strong> with pre-trained models (<strong>ResNet50, ResNet101, EfficientNetB0, and VGG16</strong>). Achieved <strong>91.83% test accuracy</strong> with EfficientNetB0, outperforming other models, and demonstrated exceptional class separation with AUC scores exceeding <strong>0.99</strong> across all architectures.</p>
           <br>
@@ -345,17 +332,13 @@ document.addEventListener('DOMContentLoaded', function() {
         <h3>Conclusion & Impact</h3>
         <p>The project demonstrates that transfer learning with modern architectures like EfficientNetB0 enables <strong>high-accuracy image classification (>90%)</strong> even on small datasets. The framework can be extended to other domains like medical imaging or satellite analysis.</p>
        
-        `
-    
-          },
-          5: {
-            name: `<h5> Performance Analysis of Diffusion Model for Cloud Removal from Satellite Images </h5>    
+        `,
+    },
+    5: {
+      name: `<h5> Performance Analysis of Diffusion Model for Cloud Removal from Satellite Images </h5>    
               <br>`,
-            images: [
-                "assets/images/cloud.png"
-                
-            ],
-            description: `
+      images: ["assets/images/cloud.png"],
+      description: `
               <h3>Project Overview</h3>
 <p>Developed a deep learning solution to reconstruct cloud-obscured regions in satellite imagery using <strong>Denoising Diffusion Probabilistic Models (DDPM)</strong>. The project addressed challenges in remote sensing by restoring missing data caused by cloud cover, achieving <strong>PSNR (Peak Signal-to-Noise Ratio): 30.25</strong> and <strong>SSIM (Structural Similarity Index): 0.9153</strong>, comparable to state-of-the-art methods. Introduced a novel application of diffusion models for satellite image inpainting, eliminating dependency on paired datasets.</p>
 <br>
@@ -393,16 +376,13 @@ document.addEventListener('DOMContentLoaded', function() {
 <h3>Impact</h3>
 
 <p>Demonstrated the viability of diffusion models for remote sensing applications, enabling accurate cloud removal without paired data. The work supports critical use cases like disaster response, agriculture, and environmental monitoring. The open-source release fosters collaboration in generative AI for geospatial analysis.</p>
-                `
-        
-              },
-              6: {
-                name: `<h5>Brain Tumor Detection using Convolutional Neural Networks (CNNs)</h5>
+                `,
+    },
+    6: {
+      name: `<h5>Brain Tumor Detection using Convolutional Neural Networks (CNNs)</h5>
                     <br>`,
-                images: [
-                    "assets/images/brain.png" 
-                ],
-                description: `
+      images: ["assets/images/brain.png"],
+      description: `
                     <h3>Project Overview</h3>
                     <p>Developed a CNN-based deep learning model to classify MRI brain scans as tumorous or healthy, achieving <strong>89% accuracy</strong> on test data. The system assists radiologists in early diagnosis by automating preliminary tumor detection, reducing manual analysis time.</p>
                     <br>
@@ -437,14 +417,12 @@ document.addEventListener('DOMContentLoaded', function() {
             
                     <h3>Impact</h3>
                     <p>Demonstrated the viability of CNNs for medical imaging tasks, providing a foundation for deploying AI-assisted diagnostic tools in healthcare. The modular architecture can be adapted to other classification tasks like detecting hemorrhages or anomalies in X-rays.</p>
-                `
-            },
-            7: {
-              name: `<h5>Android Stock Trading App</h5><br>`,
-              images: [
-                  "assets/images/stockapp.png"
-              ],
-              description: `
+                `,
+    },
+    7: {
+      name: `<h5>Android Stock Trading App</h5><br>`,
+      images: ["assets/images/stockapp.png"],
+      description: `
                   <h3>Project Overview</h3>
                   <p>Developed a dynamic Android application for virtual stock trading, leveraging real-time data from <strong>Finnhub APIs</strong>. The app enables users to explore stocks, execute simulated trades, and manage portfolios with intuitive features like favorites tracking, interactive charts, and news aggregation. This project emphasizes on seamless integration of frontend and backend technologies.</p>
                   <br>
@@ -487,39 +465,40 @@ document.addEventListener('DOMContentLoaded', function() {
                   </ul>
                           <p><strong>Note:</strong> The source code for this project is in a <strong>private GitHub repository</strong>. If you would like to <strong>view</strong> the code, please contact me via <a href="mailto:parthdpraja@gmail.com">email</a> or LinkedIn.</p>
 
-              `
-          }
-          
-      // Add more projects as needed
+              `,
+    },
 
+    // Add more projects as needed
   };
 
-  detailsBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-          const projectId = this.getAttribute('data-project');
-          const project = projects[projectId];
+  detailsBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const projectId = this.getAttribute("data-project");
+      const project = projects[projectId];
 
-          if (project) {
-              // Update modal content
-              document.getElementById('modal-project-name').innerHTML = project.name;
-              document.getElementById('modal-project-images').innerHTML = project.images
-                  .map(img => `<img src="${img}" alt="${project.name} Image">`)
-                  .join('');
-              document.getElementById('modal-project-description').innerHTML = project.description;
+      if (project) {
+        // Update modal content
+        document.getElementById("modal-project-name").innerHTML = project.name;
+        document.getElementById("modal-project-images").innerHTML =
+          project.images
+            .map((img) => `<img src="${img}" alt="${project.name} Image">`)
+            .join("");
+        document.getElementById("modal-project-description").innerHTML =
+          project.description;
 
-              // Show the modal
-              modal.style.display = 'block';
-          }
-      });
-  });
-
-  closeBtn.addEventListener('click', function() {
-      modal.style.display = 'none';
-  });
-
-  window.addEventListener('click', function(event) {
-      if (event.target === modal) {
-          modal.style.display = 'none';
+        // Show the modal
+        modal.style.display = "block";
       }
+    });
+  });
+
+  closeBtn.addEventListener("click", function () {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
   });
 });
