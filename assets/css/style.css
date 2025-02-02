@@ -1286,6 +1286,9 @@ footer {
 
 /* ----- MEDIA QUERY == 540px / RESPONSIVE ----- */
 @media only screen and (max-width: 540px) {
+    .typedText{
+        font-size: 25px;
+    }
     .nav-name {
         font-size: 24px; /* Reduce font size for smaller screens */
     }
@@ -1348,5 +1351,8 @@ footer {
 
     .bottom-footer {
         font-size: 10px; /* Further reduce font size */
+    }
+    .typedText{
+        font-size: 25px;
     }
 }
