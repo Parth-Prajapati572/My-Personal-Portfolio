@@ -34,7 +34,6 @@ var typingEffect = new Typed(".typedText", {
     "AI / ML Engineer",
     "Software Development Engineer",
     "Full-Stack Developer",
-    "Graduate Student",
   ],
   loop: true,
   typeSpeed: 100,
@@ -463,6 +462,54 @@ document.addEventListener("DOMContentLoaded", function () {
                       <li>Demonstrated ability to deliver a polished, user-centric application under technical constraints.</li>
                   </ul>
                           <p><strong>Note:</strong> The source code for this project is in a <strong>private GitHub repository</strong>. If you would like to <strong>view</strong> the code, please contact me via <a href="mailto:parthdpraja@gmail.com">email</a> or LinkedIn.</p>
+
+              `,
+    },
+    8: {
+      name: `<h5>SmartMedAI: Fine-tuning MedicalQA-based LLM using Reinforcement Learning from AI Feedback (RLAIF)</h5><br>`,
+      images: ["assets/images/smartmedai_thumbnail.png"],
+      description: `
+                  <h3>Project Overview</h3>
+                  <p>SmartMedAI is a zero-human alignment pipeline that transforms a 1.5B-parameter Qwen2.5-Instruct GPTQ model into a domain-aligned medical assistant, without relying on any human-labeled preference data. I combined Low-Rank Adaptation (LoRA) for efficient fine-tuning with Reinforcement Learning from AI Feedback (RLAIF) and Direct Preference Optimization (DPO) to align model responses with clinically accurate, safe answers.</p>
+                  <br>
+                  <h3>Key Features</h3>
+                  <ul>
+                      <li><strong>Zero-human alignment:</strong> Preference data is generated entirely by an evaluator LLM, removing the cost and bottleneck of manual clinician annotation.</li>
+                      <li><strong>Parameter-efficient fine-tuning:</strong> LoRA adapts only a small set of parameters (rank 16, α=32) on the query/value projection layers, keeping training lightweight.</li>
+                      <li><strong>Automated preference scoring:</strong> A secondary LLM scores pairs of candidate answers to build a preference dataset for DPO.</li>
+                      <li><strong>Multi-metric clinical evaluation:</strong> Alignment is validated using an LLM-based accuracy rubric, BERTScore, and BLEURT, not just one metric.</li>
+                  </ul>
+          
+                  <h3>How It Works</h3>
+                  <ul>
+                      <li><strong>Corpus Prep & LoRA Fine-Tuning:</strong> Used the UltraMedical dataset's Literature split (30K curated Q&A instances) to LoRA fine-tune the base Qwen2.5-1.5B GPTQ model.</li>
+                      <li><strong>Answer Generation & Automated Evaluation:</strong>For each question, the fine-tuned model generates two candidate answers via nucleus sampling; an evaluator LLM (Qwen2.5-3B Instruct) scores each on a 0–1 scale, producing 3,750 valid preference tuples.</li>
+                      <li><strong>DPO Alignment:</strong> Trained the model on the preference tuples (combined with UltraMedical's preference split) via Direct Preference Optimization (β=0.4), teaching it to favor the higher-scoring "chosen" response over the "rejected" one.</li>
+                      <li><strong>Clinical Evaluation:</strong> Scored the DPO-tuned model on 200 held-out clinical questions using DeepSeek-R1-70B (via Together.ai) as an alignment-centric judge, plus BERTScore and BLEURT.</li>
+                  </ul>
+          
+                  <h3>Technologies used</h3>
+                  <ul>
+                      <li><strong>Base Model:</strong> Qwen2.5-1.5B-Instruct (GPTQ, quantized)</li>
+                      <li><strong>Fine-Tuning:</strong>LoRA / PEFT (Hugging Face)</li>
+                      <li><strong>Alignment:</strong> DPOTrainer (Hugging Face TRL)</li>
+                      <li><strong>Evaluator Models:</strong> Qwen2.5-3B Instruct (preference scoring), DeepSeek-R1-70B via Together.ai API (final judging)</li>
+                      <li><strong>Evaluation Metrics:</strong> BERTScore (microsoft/deberta-large-mnli), BLEURT, Sentence-BERT cosine similarity</li>
+                      <li><strong>Dataset:</strong> UltraMedical (Literature + Preference splits)</li>
+                  </ul>
+          
+                  <h3>Applications & Benefits</h3>
+                  <ul>
+                      <li><strong>Scalable medical AI alignment:</strong> Removes the $4–6/question, 15–20 min/question cost of manual clinician annotation from the alignment loop.</li>
+                      <li><strong>Reusable framework:</strong> The LoRA → RLAIF → DPO pattern generalizes to other safety-critical domains beyond medicine.</li>                   
+                  </ul>
+
+                  <h3>Key Achievements</h3>
+                  <ul>
+                      <li>Fine-tuned a MedicalQA-based LLM using LoRA, optimizing training efficiency and enabling domain-specific adaptation</li>
+                      <li>Built a preference dataset using RLAIF, with a secondary LLM evaluating open-ended medical responses for DPO</li>    
+                      <li>Developed a DPO pipeline to align the model for clinically accurate and relevant responses, achieving 80.4% accuracy and a 0.568 BLEURT Score</li>                  
+                  </ul>
 
               `,
     },
