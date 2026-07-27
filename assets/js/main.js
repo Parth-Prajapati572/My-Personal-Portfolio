@@ -491,7 +491,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   <h3>Technologies used</h3>
                   <ul>
                       <li><strong>Base Model:</strong> Qwen2.5-1.5B-Instruct (GPTQ, quantized)</li>
-                      <li><strong>Fine-Tuning:</strong>LoRA / PEFT (Hugging Face)</li>
+                      <li><strong>Fine-Tuning:</strong> LoRA / PEFT (Hugging Face)</li>
                       <li><strong>Alignment:</strong> DPOTrainer (Hugging Face TRL)</li>
                       <li><strong>Evaluator Models:</strong> Qwen2.5-3B Instruct (preference scoring), DeepSeek-R1-70B via Together.ai API (final judging)</li>
                       <li><strong>Evaluation Metrics:</strong> BERTScore (microsoft/deberta-large-mnli), BLEURT, Sentence-BERT cosine similarity</li>
